@@ -80,17 +80,11 @@ task prepareV8(dependsOn: createNativeDepsDirectories) {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 32
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        minSdkVersion 21
+        targetSdkVersion 32
 
         externalNativeBuild {
             cmake {
@@ -109,9 +103,9 @@ android {
     }
 
     sourceSets.main {
-        jniLibs {
-            srcDirs = PUBLISH_RELEASE=='true' ? [] : ["$buildDir/third-party-ndk/hermes/jni", "$buildDir/third-party-ndk/jsc/jni", "$buildDir/third-party-ndk/v8/jni"]
-        }
+//        jniLibs {
+//            srcDirs = PUBLISH_RELEASE == 'true' ? [] : ["$buildDir/third-party-ndk/hermes/jni", "$buildDir/third-party-ndk/jsc/jni", "$buildDir/third-party-ndk/v8/jni"]
+//        }
         java {
             srcDirs = ["src/main/java"]
         }
@@ -137,9 +131,9 @@ android {
 
     packagingOptions {
         exclude '**/libfb.so'
-        exclude PUBLISH_RELEASE=='true' ? '**/libc++_shared.so':''
-        exclude PUBLISH_RELEASE=='true' ? '**/libv8-runtime.so':''
-        exclude PUBLISH_RELEASE=='true' ? '**/libjsc-runtime.so':''
+        exclude PUBLISH_RELEASE == 'true' ? '**/libc++_shared.so' : ''
+        exclude PUBLISH_RELEASE == 'true' ? '**/libv8-runtime.so' : ''
+        exclude PUBLISH_RELEASE == 'true' ? '**/libjsc-runtime.so' : ''
         doNotStrip "*/arm64-v8a/*.so"
         doNotStrip "*/armeabi-v7a/*.so"
     }
@@ -147,8 +141,7 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.annotation:annotation:1.2.0")
+    implementation("androidx.annotation:annotation:1.4.0")
     implementation project(":fbjni")
 }
 

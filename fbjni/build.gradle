@@ -5,17 +5,11 @@ plugins {
 version VERSION_NAME
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 32
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        minSdkVersion 21
+        targetSdkVersion 32
 
         externalNativeBuild {
             cmake {
@@ -61,6 +55,5 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.annotation:annotation:1.2.0")
+    implementation("androidx.annotation:annotation:1.4.0")
 }

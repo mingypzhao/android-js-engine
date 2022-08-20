@@ -5,11 +5,9 @@ buildscript {
         mavenLocal()
         maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public/' }
         google()
-        jcenter()
-
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
+        classpath 'com.android.tools.build:gradle:7.2.2'
     }
 }
 
@@ -18,7 +16,6 @@ allprojects {
         mavenLocal()
         maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public/' }
         google()
-        jcenter()
     }
 }
 
