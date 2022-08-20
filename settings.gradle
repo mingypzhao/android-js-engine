@@ -1,4 +1,3 @@
-include ':fbjni'
-include ':common-js-engine'
+include ':js-engine'
 include ':demo'
 rootProject.name='android-js-engine'
