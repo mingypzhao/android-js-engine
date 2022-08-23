@@ -15,14 +15,17 @@ if(${ANDROID_ABI} STREQUAL "arm64-v8a" OR ${ANDROID_ABI} STREQUAL  "x86_64")
     target_compile_options(v8-runtime PRIVATE -DV8_COMPRESS_POINTERS)
 endif()
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
-include_directories(${third_party_dir}/v8/include)
 
 target_link_libraries(v8-runtime
         v8android
         fbjni::fbjni
-        jsi
         javascript-lib
         -Wl,-hash-style=sysv)
+
+target_include_directories(
+        v8-runtime
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${root_dir}/node_modules/v8-android-nointl/dist/include)
 
 target_compile_options(v8-runtime PRIVATE -fexceptions -frtti -Oz -fvisibility=hidden -fvisibility-inlines-hidden -g)

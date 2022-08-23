@@ -5,7 +5,7 @@
 
 #include "JSCRuntime.h"
 
-#include <JavaScriptCore/JavaScript.h>
+#include <JavaScript.h>
 #include <atomic>
 #include <condition_variable>
 #include <cstdlib>

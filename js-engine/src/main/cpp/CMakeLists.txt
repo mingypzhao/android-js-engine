@@ -48,7 +48,6 @@ set_target_properties(
         ${third_party_dir}/v8/jni/${ANDROID_ABI}/libv8android.so)
 
 
-add_subdirectory(${lib_src_dir}/jsi ${lib_build_dir}/jsi)
 add_subdirectory(${lib_src_dir}/hermes ${lib_build_dir}/hermes)
 add_subdirectory(${lib_src_dir}/jsc ${lib_build_dir}/jsc)
 add_subdirectory(${lib_src_dir}/v8 ${lib_build_dir}/v8)
@@ -74,7 +73,6 @@ target_link_libraries(
         javascript-lib
         android
         fbjni::fbjni
-        jsi
         log
         ${log-lib}
         -Wl,-hash-style=sysv)
@@ -83,6 +81,6 @@ target_include_directories(
         javascript-lib
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
-        ${lib_src_dir}/jsi)
+        ${root_dir}/node_modules/hermes-engine/android/include)
 
 target_compile_options(javascript-lib PRIVATE -fexceptions -frtti -Oz -fvisibility=hidden -fvisibility-inlines-hidden -g)
